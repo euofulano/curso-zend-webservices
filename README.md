@@ -1,4 +1,8 @@
 curso-zend-webservices
 ======================
 
-Projeto com implementação funcionalidades Ajax, REST e SOA
+Exemplo para demonstração com Zend Framework 1 de:
+
+* Ajax
+* Rest
+* SOA
