@@ -1,0 +1,29 @@
+<p>Ver Estados: <a target="_blank" href="/ajax/estados">[HTML]</a> | <a id="ajax-estados" href="/ajax/estados?format=json">[AJAX]</a></p>
+<p>Ver Cidades: <a target="_blank" href="/ajax/cidades">[HTML]</a> | <a id="ajax-cidades" href="/ajax/cidades?format=json">[AJAX]</a></p>
+
+<div style="width: 800px; height: 600px; overflow: auto" id="ajax-result"></div>
+
+<script>
+$(function() {
+   $("#ajax-estados, #ajax-cidades").on("click", function(e) {
+       e.preventDefault();
+       
+       var isEstado = $(this).attr("id") == "ajax-estados"? true: false;
+       
+       $.get($(this).attr("href"), function(response) {
+           var html = "<ul>";
+           
+           $.each(response.data, function(i, v) {
+               var label = isEstado? "<a target='_blank' href='/ajax/cidades?uf="+ v.uf +"'>"+ v.name + "</a>": v.name;
+               
+               html+= "<li>" + label + "</li>";
+           });
+           
+           html+= "</ul>";
+           
+           $("#ajax-result").html(html);
+       });
+       
+   }) 
+});
+</script>

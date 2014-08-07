@@ -1,0 +1,7 @@
+<h1>Cidades</h1>
+
+<ul>
+    <?php foreach ($this->data as $cidade): ?>
+        <li><?= $cidade['name'] . ' - ' . $cidade['uf'] ?></li>
+    <?php endforeach; ?>
+</ul>

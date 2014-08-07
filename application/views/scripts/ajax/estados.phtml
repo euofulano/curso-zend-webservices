@@ -1,0 +1,7 @@
+<h1>Estados</h1>
+
+<ul>
+    <?php foreach ($this->data as $estado): ?>
+        <li><?= $estado['uf'] . ' - ' . $estado['name'] ?></li>
+    <?php endforeach; ?>
+</ul>
