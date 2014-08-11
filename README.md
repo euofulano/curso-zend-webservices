@@ -13,3 +13,7 @@ Referências
 * http://www.chrisdanielson.com/2009/09/02/creating-a-php-rest-api-using-the-zend-framework/
 * http://www.ahmadnassri.com/blog/restful-services-with-zend-framework/
 
+Webservice de utilizado
+
+* https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl
+
