@@ -1,0 +1,11 @@
+<h3>Upload de arquivos integrado com o Zend_Form</h3>
+
+<?= $this->form ?>
+
+<?php if(!empty($this->filename)): ?>
+
+    <div style="margin-top: 25px; border: 1px solid #CCC; background-color: #e0e0e0; padding: 20px">
+        <?= $this->filename ?>
+    </div>
+
+<?php endif;

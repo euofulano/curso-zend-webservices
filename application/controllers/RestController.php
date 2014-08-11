@@ -23,7 +23,14 @@ class RestController extends Zend_Rest_Controller {
     }
 
     public function getAction() {
-        $this->getResponse()->setBody(__METHOD__);
+        $id = $this->_request->getParam('id');
+        
+        $db = Zend_Registry::get('db');
+        $result = $db->fetchAll('SELECT * FROM states WHERE uf = ?', array($id));
+        
+        $json = Zend_Json::encode($result);
+        
+        $this->getResponse()->setBody($json);
         $this->getResponse()->setHttpResponseCode(200);
     }
 

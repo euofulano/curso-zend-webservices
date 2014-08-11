@@ -1,0 +1,15 @@
+<h3>Upload de arquivos utilizado somente Zend_File_Transfer</h3>
+
+<form enctype="multipart/form-data" action="" method="POST">
+    Escolha um arquivo para o upload: <input name="upload[]" type="file" />
+    <br />
+    <input type="submit" value="Fazer upload do arquivo" />
+</form>
+
+<?php if(!empty($this->uploadResult)): ?>
+
+    <div style="margin-top: 25px; border: 1px solid #CCC; background-color: #e0e0e0; padding: 20px">
+        <?= $this->uploadResult ?>
+    </div>
+
+<?php endif;
