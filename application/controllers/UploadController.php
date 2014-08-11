@@ -13,35 +13,35 @@ class UploadController extends Zend_Controller_Action {
     public function comFormularioAction() {
         $form = new Zend_Form();
         $form->setAttrib('enctype', 'multipart/form-data');
-        
-        $destDir = APPLICATION_PATH . '/../data/tmp';
-        
+
+        $destDir = realpath(APPLICATION_PATH . '/../data/tmp');
+
         $element = new Zend_Form_Element_File('file');
         $element->setLabel('Upload de imagem:')
-            ->setDestination($destDir);
-        
+                ->setDestination($destDir);
+
         // somente um arquivo
         $element->addValidator('Count', false, 1);
         // limit to 1Mb
         $element->addValidator('Size', false, 1024000);
         // only JPEG, PNG, and GIFs
         $element->addValidator('Extension', false, 'jpg,png,gif');
-        
-        $submit = new Zend_Form_Element_Submit('enviar');        
-        
+
+        $submit = new Zend_Form_Element_Submit('enviar');
+
         $form->addElement($element);
         $form->addElement($submit);
-        
+
         $this->view->form = $form;
-        
+
         if ($this->_request->isPost()) {
             $data = $this->_request->getPost();
-            
-            if($form->isValid($data)) {
-                if(!$form->file->receive()) {
+
+            if ($form->isValid($data)) {
+                if (!$form->file->receive()) {
                     throw new Exception("Falha ao realizar o upload");
                 }
-                
+
                 $this->view->filename = $form->file->getFileName();
             }
         }
@@ -49,9 +49,9 @@ class UploadController extends Zend_Controller_Action {
 
     public function semFormularioAction() {
         $html = '';
-        
+
         if ($this->_request->isPost()) {
-            $destDir = APPLICATION_PATH . '/../data/tmp';
+            $destDir = realpath(APPLICATION_PATH . '/../data/tmp');
 
             /* Uploading Document File on Server */
             $upload = new Zend_File_Transfer_Adapter_Http();
