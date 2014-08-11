@@ -30,6 +30,9 @@ class SoapController extends Zend_Controller_Action {
     private function handleSOAP() {
         $soap = new Zend_Soap_Server($this->_WSDL_URI . "?wsdl");
         $soap->setClass('Application_Model_SoapTest');
+        
+        //registra a exceções que são geradas pelo webservice
+        $soap->registerFaultException(array('Application_Model_SoapTestException'));
         $soap->handle();
     }
 
